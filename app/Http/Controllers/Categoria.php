@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Categoria extends Controller
 {
@@ -13,7 +14,11 @@ class Categoria extends Controller
      */
     public function index()
     {
-        //
+        $categorias=DB::table('categoria')->get();
+
+        return view('categorias.index',[
+            'categorias'=>$categorias
+        ]);
     }
 
     /**
@@ -45,7 +50,14 @@ class Categoria extends Controller
      */
     public function show($id)
     {
-        //
+        $categoria=DB::table('categoria')->where('id','=',$id)->first();
+        $equipos=DB::table('equipo')->where('idCategoria','=',$id)->get();
+        
+
+        return view('categorias.categoria',[
+            'categoria'=>$categoria,
+            'equipos'=>$equipos
+        ]);
     }
 
     /**
