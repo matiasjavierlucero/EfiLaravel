@@ -37,7 +37,7 @@
                         <td>{{$jugador->nombre}}</td>
                         <td>{{$jugador->NomEquipo}}</td>
                         <td>{{$jugador->NomPosicion}}</td>
-                        <td>{{$jugador->nombre}}</td>
+                        <td>{{$jugador->dorsal}}</td>
                         <td>{{$jugador->NomLocalidad}}</td>
                         <td>
                         <a href="{{$jugador->photo}}"><button class="btn btn-secondary"  data-toggle="modal" data-target="#modalFoto"><i class="fa fa-eye" aria-hidden="true"></i></button></a>

@@ -14,7 +14,18 @@ class Jugadores extends Controller
      */
     public function index()
     {
-        //
+        $jugadores=DB::table('jugador')
+        ->join('localidad', 'localidad.id', '=', 'jugador.idLocalidad')
+        ->join('equipo', 'equipo.id', '=', 'jugador.idEquipo')
+        ->join('posicion', 'posicion.id', '=', 'jugador.idPosicion')
+        ->select('jugador.*', 'localidad.Nombre as NomLocalidad', 'equipo.Nombre as NomEquipo','posicion.Nombre as NomPosicion')
+        ->get();
+
+       /*  var_dump($jugadores);
+        die(); */
+        return view('jugadores.index',[
+            'jugadores'=>$jugadores
+        ]);
     }
 
     /**

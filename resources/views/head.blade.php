@@ -25,12 +25,12 @@
         </div>
         <div class="col">
             <div class="card" >
-                <div class="display-4 btn btn-secondary" style="font-size: 1.3rem">
+                <a href="/jugadores/index" class="display-4 btn btn-secondary" style="font-size: 1.3rem">
                     Jugadores
                     <br>
                     <br>
                     <i class="fa fa-users" aria-hidden="true" style="font-size: 3.3rem"></i>
-                </div>
+                </a>
             </div>
         </div>
     </div>
