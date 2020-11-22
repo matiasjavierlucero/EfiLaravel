@@ -12,7 +12,7 @@
         <br>  
         @foreach ($equipos as $equipo)
         <div class="col">
-                <a href="equipo/{{$equipo->id}}" class="card bg-dark text-center" style="height:50px;text-decoration: none;color:white" >
+                <a href="/equipos/equipo/{{$equipo->id}}" class="card bg-dark text-center" style="height:50px;text-decoration: none;color:white" >
                     <h5>
                     {{$equipo->Nombre}}
                     </h5>
