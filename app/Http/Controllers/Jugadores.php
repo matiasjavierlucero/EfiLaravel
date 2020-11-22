@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Jugadores extends Controller
 {
@@ -79,6 +80,11 @@ class Jugadores extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jugador=DB::table('jugador')->where('id','=',$id)->first();
+        $idEquipo=$jugador->idEquipo;//Id del equipo al que pertenecia el jugador, debo enviarlo por la action
+        
+        $jugador=DB::table('jugador')->where ('id',$id)->delete();
+
+        return redirect()->action('Equipos@show',['id'=>$idEquipo])->with('status','Jugador Eliminado Correctame');
     }
 }

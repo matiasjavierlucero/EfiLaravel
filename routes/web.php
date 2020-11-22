@@ -34,6 +34,9 @@ Route::group(['prefix'=>'equipos'],function(){
     Route::get('equipo/{id}','Equipos@show');
 });
 //Rutas de Jugadores
-
+Route::group(['prefix'=>'jugadores'],function(){
+   // Route::get('index','Equipos@index');
+    Route::get('delete/{id}','Jugadores@destroy');
+});
 
 
