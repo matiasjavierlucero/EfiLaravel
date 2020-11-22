@@ -53,9 +53,15 @@ class Equipos extends Controller
     public function show($id)
     {
         $equipo=DB::table('equipo')->where('id','=',$id)->first();
-        $jugadores=DB::table('jugador')->where('idEquipo','=',$id)->get();
-        
+        $jugadores=DB::table('jugador')
+        ->join('localidad', 'localidad.id', '=', 'jugador.idLocalidad')
+        ->join('equipo', 'equipo.id', '=', 'jugador.idEquipo')
+        ->join('posicion', 'posicion.id', '=', 'jugador.idPosicion')
+        ->select('jugador.*', 'localidad.Nombre as NomLocalidad', 'equipo.Nombre as NomEquipo','posicion.Nombre as NomPosicion')
+        ->where('idEquipo','=',$id)->get();
 
+       /*  var_dump($jugadores);
+        die(); */
         return view('equipos.equipo',[
             'equipo'=>$equipo,
             'jugadores'=>$jugadores

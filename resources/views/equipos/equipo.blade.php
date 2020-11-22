@@ -35,16 +35,14 @@
                     <tr>
                         <td>{{$jugador->apellido}}</td>
                         <td>{{$jugador->nombre}}</td>
-                        <td>{{$jugador->idEquipo}}</td>
-                        <td>{{$jugador->apellido}}</td>
+                        <td>{{$jugador->NomEquipo}}</td>
+                        <td>{{$jugador->NomPosicion}}</td>
                         <td>{{$jugador->nombre}}</td>
-                        <td>{{$jugador->idEquipo}}</td>
+                        <td>{{$jugador->NomLocalidad}}</td>
                         <td>
-                            <a href="#"><button class="btn btn-secondary"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
-                            <a href="#"><button class="btn btn-secondary"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
-                            
-                            <a href="#"><button class="btn btn-secondary"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
-                        
+                        <a href="{{$jugador->photo}}"><button class="btn btn-secondary"  data-toggle="modal" data-target="#modalFoto"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
+                            <a href="#"><button class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></i></button></a>
+                            <a href="#"><button class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
                         </td>
                     </tr>
                     @endforeach
@@ -52,4 +50,5 @@
         </table>                
     </div>
 </div>
+
 
