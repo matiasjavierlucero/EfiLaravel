@@ -28,11 +28,17 @@ Route::group(['prefix'=>'categorias'],function(){
     Route::get('categoria/{id}','Categoria@show');
 
 });
+
 //Rutas de Equipos
 Route::group(['prefix'=>'equipos'],function(){
     Route::get('index','Equipos@index');
     Route::get('equipo/{id}','Equipos@show');
+    Route::get('nuevoequipo','Equipos@create');
+    Route::post('guardar','Equipos@store');
+    Route::get('editar/{id}','Equipos@edit');
+    Route::post('update','Equipos@update');
 });
+
 //Rutas de Jugadores
 Route::group(['prefix'=>'jugadores'],function(){
     Route::get('index','Jugadores@index');

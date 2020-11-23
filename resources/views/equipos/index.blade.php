@@ -1,10 +1,16 @@
 @include('includes.header')
 <div class="container">
     <div class="row">
-        <div class="col text-center">
+        <div class="col-4"></div>
+        <div class="col-4 text-center">
             <div class="display-4 text-center" style="font-size: 1.5rem">
                <b> Equipos del Fubol Argentino</b>
             </div>
+        </div>
+        <div class="col-4 text-right">
+            <a href="nuevoequipo" class="btn btn-secondary">
+                <i class="fa fa-plus" aria-hidden="true"></i> Nuevo Equipo
+            </a>
         </div>
     </div>
     <br>

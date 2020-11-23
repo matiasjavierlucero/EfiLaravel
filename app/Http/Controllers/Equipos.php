@@ -30,7 +30,25 @@ class Equipos extends Controller
      */
     public function create()
     {
-        //
+        $categorias=DB::table('categoria')
+       ->orderBy('Id','asc')
+       ->get();
+        $localidades=DB::table('localidad')
+       ->orderBy('Nombre','asc')
+       ->get();
+        $equipos=DB::table('equipo')
+        ->orderBy('Nombre','asc')
+        ->join('localidad', 'equipo.idLocalidad', '=', 'localidad.id')
+        ->join('categoria', 'equipo.idCategoria', '=', 'categoria.id')
+        ->select('equipo.*', 'localidad.Nombre as NomLocalidad', 'categoria.Nombre as NomCategoria')
+        ->get();
+
+
+        return view('equipos.nuevoequipo',[
+            'equipos'=>$equipos,
+            'categorias'=>$categorias,
+            'localidades'=>$localidades,
+        ]);
     }
 
     /**
@@ -41,7 +59,14 @@ class Equipos extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* var_dump($request->input('LocalidadEquipo'));
+        die(); */
+        $equipo=DB::table('equipo')->insert(array(
+            'nombre' => $request->input('NombreEquipo'),
+            'idLocalidad'=>$request->input('LocalidadEquipo'),
+            'idCategoria'=>$request->input('CategoriaEquipo')
+        ));
+        return redirect()->action('Equipos@create');
     }
 
     /**
@@ -76,7 +101,45 @@ class Equipos extends Controller
      */
     public function edit($id)
     {
-        //
+        //Datos para el Fomulario
+        $equipo=DB::table('equipo')
+        ->orderBy('Nombre','asc')
+        ->join('localidad', 'equipo.idLocalidad', '=', 'localidad.id')
+        ->join('categoria', 'equipo.idCategoria', '=', 'categoria.id')
+        ->select('equipo.*', 'localidad.Nombre as NomLocalidad',
+                'localidad.id as IdLocalidad', 
+                'categoria.Nombre as NomCategoria',
+                'categoria.id as IdCategoria')
+        ->where('equipo.id','=',$id)
+        ->first();
+      
+
+        //Datos para la vista
+        $equipos=DB::table('equipo')
+        ->orderBy('Nombre','asc')
+        ->join('localidad', 'equipo.idLocalidad', '=', 'localidad.id')
+        ->join('categoria', 'equipo.idCategoria', '=', 'categoria.id')
+        ->select('equipo.*', 'localidad.Nombre as NomLocalidad',
+                'localidad.id as IdLocalidad', 
+                'categoria.Nombre as NomCategoria',
+                'categoria.id as IdCategoria')
+        ->get();
+        
+
+        $categorias=DB::table('categoria')
+       ->orderBy('Id','asc')
+       ->get();
+
+        $localidades=DB::table('localidad')
+       ->orderBy('Nombre','asc')
+       ->get();
+       
+        return view('equipos.nuevoequipo',[
+            'equipo'=>$equipo,
+            'equipos'=>$equipos,
+            'categorias'=>$categorias,
+            'localidades'=>$localidades
+        ]);
     }
 
     /**
@@ -86,9 +149,24 @@ class Equipos extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        //Almaceno los parametros para hacer mas limpio el update
+        $idEquipo=$request->input('id');
+        $nombreEquipo=$request->input('NombreEquipo');
+        $localidadEquipo=$request->input('LocalidadEquipo');
+        $categoriaEquipo=$request->input('CategoriaEquipo');
+
+        $equipo=DB::table('equipo')
+        ->where('equipo.id','=',$idEquipo)
+        ->update(array(
+            'Nombre'=>$nombreEquipo,
+            'idLocalidad'=>$localidadEquipo,
+            'idCategoria'=>$categoriaEquipo
+        ));
+        return redirect()->action('Equipos@create',[
+            'Mensaje'=>'Equipo Modificado Correctamente'
+        ]);
     }
 
     /**
