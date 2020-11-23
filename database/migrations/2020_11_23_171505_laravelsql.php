@@ -19,6 +19,7 @@ class Laravelsql extends Migration
         Schema::create('localidad', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->timestamps();
         });
     }
 
