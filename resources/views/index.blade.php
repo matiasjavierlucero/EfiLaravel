@@ -1,4 +1,4 @@
-@include('includes.header')
+@include('layouts.app')
 
 <div class="containter text-center">
     <div class="row" style="height: 400px">
