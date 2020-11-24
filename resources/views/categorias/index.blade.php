@@ -13,7 +13,7 @@
         @foreach ($categorias as $categoria)
         <div class="col">
         <a href="categoria/{{$categoria->id}}" class="card bg-dark text-center" style="height:50px;text-decoration: none;color:white" >
-            <h5>
+            <h5 class="m-0">
                 {{$categoria->Nombre}}
             </h5>
         </a>

@@ -1,15 +1,15 @@
 @include('layouts.app')
 
-<div class="containter text-center">
+<div class="containter text-center m-2">
     <div class="row" style="height: 400px">
         
         <div class="col">
             <div class="card" >
-                <a href="/categorias/index" class="display-4 btn btn-dark" style="font-size: 1.3rem">
-                    Categoria
+                <a href="/categorias/index" class="display-4 btn " id="cat" style="font-size: 1.3rem;background-color:rgb(192, 117, 142);">
+                    Categorias
+                    <br>    
                     <br>
-                    <br>
-                    <i class="fa fa-users" aria-hidden="true" style="font-size: 3.3rem"></i>
+                    <img src="{{ asset('images/categoria.png') }}" alt="" style="width: 80%">
                 </a>
             </div>
         </div>
@@ -19,19 +19,21 @@
                     Equipos
                     <br>
                     <br>
-                    <i class="fa fa-shield" aria-hidden="true" style="font-size: 3.3rem"></i>
+                   <img src="{{ asset('images/escudo.png') }}" alt="" style="width: 80%">
                 </a>
             </div>
         </div>
         <div class="col">
             <div class="card" >
-                <a href="/jugadores/index" class="display-4 btn btn-secondary" style="font-size: 1.3rem">
+                <a href="/jugadores/index" class="display-4 btn btn-success" style="font-size: 1.3rem">
                     Jugadores
                     <br>
                     <br>
-                    <i class="fa fa-users" aria-hidden="true" style="font-size: 3.3rem"></i>
+                    <img src="{{ asset('images/2112176.png') }}" alt="" style="width: 80%">
                 </a>
             </div>
         </div>
     </div>
 </div>
+
+@include('includes.footer')
