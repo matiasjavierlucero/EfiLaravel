@@ -43,6 +43,8 @@ Route::group(['prefix'=>'equipos'],function(){
 Route::group(['prefix'=>'jugadores'],function(){
     Route::get('index','Jugadores@index')->middleware('auth');
     Route::get('delete/{id}','Jugadores@destroy')->middleware('auth');
+    Route::get('nuevojugador','Jugadores@create')->middleware('auth');
+    Route::post('guardar','Jugadores@store')->middleware('auth');
 });
 
 

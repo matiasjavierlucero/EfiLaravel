@@ -1,10 +1,14 @@
 @include('layouts.app')
 <div class="container">
      <div class="row">
+         <div class="col"></div>
         <div class="col text-center">
             <div class="display-4 text-center" style="font-size: 1.5rem">
                <b> Listado de Jugadores del Futbol Argentino</b>
             </div>
+        </div>
+        <div class="col">
+            <a href="nuevojugador" class="btn btn-info">Nuevo Jugador</a>
         </div>
     </div>
      <div class="row">

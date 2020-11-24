@@ -35,7 +35,30 @@ class Jugadores extends Controller
      */
     public function create()
     {
-        //
+        $equipos=DB::table('equipo')
+       ->orderBy('Id','asc')
+       ->get();
+        $posiciones=DB::table('posicion')
+       ->orderBy('Nombre','asc')
+       ->get();
+        $localidades=DB::table('localidad')
+       ->orderBy('Nombre','asc')
+       ->get();
+        $jugadores=DB::table('jugador')
+        ->orderBy('Nombre','asc')
+        ->join('localidad', 'jugador.idLocalidad', '=', 'localidad.id')
+        ->join('posicion', 'jugador.idPosicion', '=', 'posicion.id')
+        ->join('equipo', 'jugador.idEquipo', '=', 'equipo.id')
+        ->select('jugador.*', 'localidad.Nombre as NomLocalidad', 'equipo.Nombre as NomEquipo','posicion.Nombre as NomPosicion','localidad.id as IdLocalidad','posicion.id as IdPosicion','equipo.id as IdEquipo')
+        ->get();
+
+
+        return view('jugadores.nuevojugador',[
+            'equipos'=>$equipos,
+            'posiciones'=>$posiciones,
+            'localidades'=>$localidades,
+            'jugadores'=>$jugadores,
+        ]);
     }
 
     /**
@@ -46,8 +69,17 @@ class Jugadores extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $jugador=DB::table('jugador')->insert(array(
+            'Apellido' => $request->input('ApellidoJugador'),
+            'Nombre' => $request->input('NombreJugador'),
+            'idLocalidad'=>$request->input('LocalidadJugador'),
+            'idEquipo'=>$request->input('EquipoJugador'),
+            'idPosicion'=>$request->input('PosicionJugador'),
+            'dorsal'=>$request->input('dorsal')
+        ));
+        return redirect()->action('Jugadores@create');
     }
+    
 
     /**
      * Display the specified resource.
@@ -91,11 +123,18 @@ class Jugadores extends Controller
      */
     public function destroy($id)
     {
-        $jugador=DB::table('jugador')->where('id','=',$id)->first();
+        $jugador=DB::table('jugador')
+                    ->where('id','=',$id)
+                    ->first();
+
         $idEquipo=$jugador->idEquipo;//Id del equipo al que pertenecia el jugador, debo enviarlo por la action
         
         $jugador=DB::table('jugador')->where ('id',$id)->delete();
 
-        return redirect()->action('Equipos@show',['id'=>$idEquipo])->with('status','Jugador Eliminado Correctame');
+        return redirect()->action('Equipos@show',
+                            [
+                            'id'=>$idEquipo
+                            ])
+                            ->with('status','Jugador Eliminado Correctame');
     }
 }
