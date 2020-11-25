@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Monolog\Logger;
 
 class Categoria extends Controller
 {
@@ -14,6 +16,7 @@ class Categoria extends Controller
      */
     public function index()
     {
+        Log::channel('slack')->critical('Alguien ingreso a Categorias');
         $categorias=DB::table('categoria')->get();
 
         return view('categorias.index',[

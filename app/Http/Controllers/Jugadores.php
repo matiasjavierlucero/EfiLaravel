@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Monolog\Logger;
 
 class Jugadores extends Controller
 {
@@ -77,6 +79,7 @@ class Jugadores extends Controller
             'idPosicion'=>$request->input('PosicionJugador'),
             'dorsal'=>$request->input('dorsal')
         ));
+        Log::channel('slack')->critical('Se agrego un nuevo Jugador');
         return redirect()->action('Jugadores@create');
     }
     

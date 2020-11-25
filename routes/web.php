@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Log;
+use Monolog\Logger;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,6 @@ Route::group(['prefix'=>'localidades'],function(){
 Route::group(['prefix'=>'categorias'],function(){
     Route::get('index','Categoria@index')->middleware('auth');
     Route::get('categoria/{id}','Categoria@show')->middleware('auth');
-
 });
 
 //Rutas de Equipos
@@ -46,8 +46,6 @@ Route::group(['prefix'=>'jugadores'],function(){
     Route::get('nuevojugador','Jugadores@create')->middleware('auth');
     Route::post('guardar','Jugadores@store')->middleware('auth');
 });
-
-
 
 Auth::routes();
 
