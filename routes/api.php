@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('/jugador','ApiJugadorController')->except(['create','edit']);
+
+Route::resource('/equipo','ApiEquipoController')->except(['create','edit']);
