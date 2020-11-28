@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApiJugadoresTable extends Migration
+class Relacionfechas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateApiJugadoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('api_jugadores', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('fixture', function (Blueprint $table) {
+           
+            $table->unsignedInteger('fecha');
+            $table->foreign('fecha')->references('id')->on('fecha');
+            
         });
     }
 
@@ -26,6 +28,6 @@ class CreateApiJugadoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('api_jugadores');
+        //
     }
 }

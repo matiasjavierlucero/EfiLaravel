@@ -46,6 +46,13 @@ Route::group(['prefix'=>'jugadores'],function(){
     Route::get('nuevojugador','Jugadores@create')->middleware('auth');
     Route::post('guardar','Jugadores@store')->middleware('auth');
 });
+//Rutas de Fixture
+Route::group(['prefix'=>'fixture'],function(){
+    Route::get('index','FixtureController@index')->middleware('auth');
+    Route::get('categoria/{id}','FixtureController@categoria')->middleware('auth');
+    Route::get('categoria/{idCategoria}/fecha/{idFecha}','FixtureController@show')->middleware('auth');
+    Route::post('guardar','FixtureController@store')->middleware('auth');
+});
 
 Auth::routes();
 
