@@ -52,6 +52,7 @@ Route::group(['prefix'=>'fixture'],function(){
     Route::get('categoria/{id}','FixtureController@categoria')->middleware('auth');
     Route::get('categoria/{idCategoria}/fecha/{idFecha}','FixtureController@show')->middleware('auth');
     Route::post('guardar','FixtureController@store')->middleware('auth');
+    Route::get('delete/{id}','FixtureController@destroy')->middleware('auth');
 });
 
 Auth::routes();

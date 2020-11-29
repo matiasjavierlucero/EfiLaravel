@@ -17,7 +17,7 @@
     <div class="row">
         <br>
         @foreach ($equipos as $equipo)
-        <div class="col">
+        <div class="col-4 mt-1">
         <a href="equipo/{{$equipo->id}}" class="card bg-dark text-center" style="height:50px;text-decoration: none;color:white" >
             <h5>
                 {{$equipo->Nombre}}

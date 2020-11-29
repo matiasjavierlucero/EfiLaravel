@@ -35,7 +35,7 @@
         </div>
         <div class="col">
             <div class="card" >
-                <a href="/fixture/index" class="display-4 btn btn-warning" style="font-size: 1.3rem">
+                <a href="/fixture/categoria/1/fecha/1" class="display-4 btn btn-warning" style="font-size: 1.3rem">
                     Fixture
                     <br>
                     <br>

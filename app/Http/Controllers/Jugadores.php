@@ -77,10 +77,12 @@ class Jugadores extends Controller
             'idLocalidad'=>$request->input('LocalidadJugador'),
             'idEquipo'=>$request->input('EquipoJugador'),
             'idPosicion'=>$request->input('PosicionJugador'),
-            'dorsal'=>$request->input('dorsal')
+            'dorsal'=>$request->input('dorsal'),
+            'dni'=>'0',
+            'photo'=>'none',
         ));
         Log::channel('slack')->critical('Se agrego un nuevo Jugador');
-        return redirect()->action('Jugadores@create');
+        return redirect()->action('Jugadores@create')->with('success','Jugador Creado Correctamente');
     }
     
 

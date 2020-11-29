@@ -1,5 +1,8 @@
 @include('layouts.app')
+
 <div class="container">
+
+
     <div class="row">
        <div class="col mb-4 text-center">
        @if (isset($categoria) && is_object($categoria))
@@ -12,7 +15,7 @@
     <div class="row mb-2">
          @foreach ($categorias as $categoria)
         <div class="col">
-            <a href="/fixture/categoria/{{$categoria->id}}" class="card bg-dark text-center" style="height:50px;text-decoration: none;color:white" >
+            <a href="/fixture/categoria/{{$categoria->id}}/fecha/1" class="card bg-dark text-center" style="height:50px;text-decoration: none;color:white" >
                 <h5 class="m-0">
                     {{$categoria->Nombre}}
                 </h5>
@@ -83,8 +86,9 @@
                 @if (isset($fixture) && is_object($fixture))
                     @foreach ($fixture as $fixt)
                         <div class="card text-center m-1">
-                            <h5><b>{{$fixt->Nombre}}</b> vs <b>{{$fixt->Nombre}}</b></h5>        
+                        <h5><b>{{$fixt->Nombre}}</b> vs <b>{{$fixt->Nombre}}</b><a href="/fixture/delete/{{$fixt->id}}" class="text-rigth"><i class="fa fa-trash" aria-hidden="true"></i></a></h5>
                         </div>
+                        
                     @endforeach
                 @endif
             </div>

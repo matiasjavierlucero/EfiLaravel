@@ -64,17 +64,35 @@ class FixtureController extends Controller
      */
     public function store(Request $request)
     {
-     
-      $fixture=DB::table('fixture')->insert(array(
-            'idLocal' => $request->input('local'),
-            'idVisitante'=>$request->input('visitante'),
-            'fecha'=>$request->input('fecha'),
-            'idCategoria'=>$request->input('categoria'),
-        ));
-        return redirect()->action('FixtureController@show',[
-            'idCategoria'=>$request->input('categoria'),
-            'idFecha'=>$request->input('fecha'),
-        ]);
+        $partido=DB::table('fixture')
+        ->where('idLocal','=',$request->input('local'))
+        ->where('idVisitante','=',$request->input('visitante'))
+        ->where('fecha','=',$request->input('fecha'))
+        ->first();
+        if (isset($partido)) {
+            //var_dump('Este partido ya existe, no es posible cargarlo');
+            return redirect()->action('FixtureController@show',[
+                'idCategoria'=>$request->input('categoria'),
+                'idFecha'=>$request->input('fecha'),
+            ])->with('error','Partido ya existente');
+        }else{
+            if ($request->input('local')==$request->input('visitante')) {
+                 return redirect()->action('FixtureController@show',[
+                'idCategoria'=>$request->input('categoria'),
+                'idFecha'=>$request->input('fecha'),
+            ])->with('error','Donde viste un equipo jugando contra si mismo?? En el Fifa nomas');
+            }
+            $fixture=DB::table('fixture')->insert(array(
+                'idLocal' => $request->input('local'),
+                'idVisitante'=>$request->input('visitante'),
+                'fecha'=>$request->input('fecha'),
+                'idCategoria'=>$request->input('categoria'),
+            ));
+            return redirect()->action('FixtureController@show',[
+                'idCategoria'=>$request->input('categoria'),
+                'idFecha'=>$request->input('fecha'),
+            ])->with('success','Partido Cargado Correctamente');
+        }
     }
 
     /**
@@ -136,8 +154,20 @@ class FixtureController extends Controller
      * @param  \App\fixture  $fixture
      * @return \Illuminate\Http\Response
      */
-    public function destroy(fixture $fixture)
+    public function destroy($id)
     {
-        //
+        $partido=DB::table('fixture')
+                    ->where('id','=',$id)
+                    ->first();
+
+        $idFecha=$partido->fecha;//Fecha del partido eliminado, debo enviarlo por la action
+        $idCategoria=$partido->idCategoria;//Id de la categoria del partido, debo enviarlo por la action
+        
+        $partido=DB::table('fixture')->where ('id',$id)->delete();
+
+        return redirect()->action('FixtureController@show',[
+                'idCategoria'=>$idFecha,
+                'idFecha'=>$idCategoria,
+            ])->with('success','Partido Eliminado Correctamente');
     }
 }
