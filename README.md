@@ -49,3 +49,8 @@ En el marco de la **Evaluacion Final Integradora (EFI)**, de la asignatura **Pro
     - http://localhost:8000/api/fixture 
 
 
+
+
+## En construccion
+    - Ver-Editar Jugador
+    - Ver-Eliminar Equipo
