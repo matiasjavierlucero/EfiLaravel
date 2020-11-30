@@ -10,12 +10,12 @@
 
 
 ## Sobre el proyecto
-En el marco de la **Evaluacion Final Integradora (EFI)**, de la asignatura **Programacion III (Laravel)**, desarrolle una pequeña aplicacion web para simular la carga que realiza una asociacion de futbol, en este caso tomando como ejemplo la Liga Argentina de Futbol, y las categorias asociadas a AFA y Federacion de Futbol Profesional.
+En el marco de la **Evaluación Final Integradora (EFI)**, de la asignatura **Programación III (Laravel)**, desarrollé una pequeña aplicación web para simular la carga que realiza una asociacion de futbol, en este caso tomando como ejemplo la Liga Argentina de Futbol, y las categorias asociadas a AFA y Federación de Futbol Profesional.
 
 
 ## Instalación 
 
-1. Crear un Schema DB, las credenciales seran necesarias para configurar el archivo .env.
+1. Crear un Schema DB, las credenciales serán necesarias para configurar el archivo .env.
 
 2. Clone el repositorio **https://github.com/matiasjavierlucero/EfiLaravel**
 
@@ -23,10 +23,10 @@ En el marco de la **Evaluacion Final Integradora (EFI)**, de la asignatura **Pro
     - **`composer install`**
     -  **`npm install`**
 
-4. Realizar la migracion y el rellenado de datos
+4. Realizar la migración y el rellenado de datos
     - **`php artisan migrate --seed`**  
     
-5. La migracion creara un usuario 
+5. La migración creara un usuario 
     - User : **santipalacios@gmail.com**, password **laravel**
 
 6. Correr la app **(Port:8000)**:
@@ -51,6 +51,6 @@ En el marco de la **Evaluacion Final Integradora (EFI)**, de la asignatura **Pro
 
 
 
-## En construccion
+## En construcción
     - Ver-Editar Jugador
     - Ver-Eliminar Equipo
