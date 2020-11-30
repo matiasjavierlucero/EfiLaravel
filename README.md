@@ -14,3 +14,18 @@ En el marco de la **Evaluacion Final Integradora (EFI)**, de la asignatura **Pro
 ## Modelo de la Base de Datos
 
 ![Database_Model](https://github.com/matiasjavierlucero/EfiLaravel/blob/master/public/images/Diagram.png)
+
+## Instalacion 
+
+1. Crear un Schema DB, las credenciales seran necesarias para configurar el archivo .env.
+
+2. Clone el repositorio **https://github.com/matiasjavierlucero/EfiLaravel**
+
+3. Realizar 
+    - **`composer install`**
+    -  **`npm install`**
+
+4. Realizar la migracion y el rellenado de datos
+    - **`php artisan migrate --seed`**  
+    
+5. La migracion creara un usuario User : **santipalacios@gmail.com**, password **laravel**
