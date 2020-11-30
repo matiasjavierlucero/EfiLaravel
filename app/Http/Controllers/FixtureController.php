@@ -27,12 +27,14 @@ class FixtureController extends Controller
         $categoria=DB::table('categoria')->where('id','=',$id)->first();
         $equipos=DB::table('equipo')->where('idCategoria','=',$id)->get();
         $fecha=DB::table('fecha')->get();
+
         $fixture=DB::table('fixture')
-        ->join('equipo','fixture.idLocal', '=', 'equipo.id')
-        ->select('fixture.*', 'equipo.Nombre as Nombre')
-        ->where('fixture.idCategoria','=',$id)
-        ->where('fixture.fecha','=','1')
-        ->get();
+            ->select('fixture.*','equipolocal.nombre as local','equipovisitante.nombre as visitante')
+            ->join('equipo as equipolocal','fixture.idLocal', '=', 'equipolocal.id')
+            ->where('fixture.idCategoria','=',$id)
+            ->where('fixture.fecha','=','1')
+            ->join('equipo as equipovisitante','fixture.idVisitante', '=', 'equipovisitante.id')
+            ->get();
         
         return view('fixture.index',[
             'categorias'=>$categorias,
@@ -63,12 +65,19 @@ class FixtureController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        /* $equipo=DB::table('fixture')
+        ->where('idLocal','=',$request->input('local'))
+        ->orWhere('idVisitante','=',$request->input('visitante'))
+        ->where('fecha','=',$request->input('fecha'))
+        ->first(); */
+
         $partido=DB::table('fixture')
         ->where('idLocal','=',$request->input('local'))
         ->where('idVisitante','=',$request->input('visitante'))
         ->where('fecha','=',$request->input('fecha'))
         ->first();
+
         if (isset($partido)) {
             //var_dump('Este partido ya existe, no es posible cargarlo');
             return redirect()->action('FixtureController@show',[
@@ -108,11 +117,12 @@ class FixtureController extends Controller
         $equipos=DB::table('equipo')->where('idCategoria','=',$idCategoria)->get();
         $fecha=DB::table('fecha')->get();
         $fixture=DB::table('fixture')
-        ->join('equipo','fixture.idLocal', '=', 'equipo.id')
-        ->select('fixture.*', 'equipo.Nombre as Nombre')
-        ->where('fixture.idCategoria','=',$idCategoria)
-        ->where('fixture.fecha','=',$idFecha)
-        ->get();
+            ->select('fixture.*','equipolocal.nombre as local','equipovisitante.nombre as visitante')
+            ->join('equipo as equipolocal','fixture.idLocal', '=', 'equipolocal.id')
+            ->where('fixture.idCategoria','=',$idCategoria)
+            ->where('fixture.fecha','=',$idFecha)
+            ->join('equipo as equipovisitante','fixture.idVisitante', '=', 'equipovisitante.id')
+            ->get();
         
         return view('fixture.index',[
             'categorias'=>$categorias,

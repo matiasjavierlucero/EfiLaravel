@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\jugador;
+use App\Jugadores;
+use App\Equipos;
 
 class ApiJugadorController extends Controller
 {
@@ -14,7 +15,8 @@ class ApiJugadorController extends Controller
      */
     public function index()
     {
-        return jugador::all();
+       $Jugadores = Jugadores::with('equipo')->get();          
+        return $Jugadores;
     }
 
     /**
@@ -46,7 +48,18 @@ class ApiJugadorController extends Controller
      */
     public function show($id)
     {
-        //
+        $Jugador = Jugadores::with('equipo')
+        ->where('id','=',$id)
+        ->first(); 
+        
+        if(isset ($Jugador)){
+            return $Jugador;
+        }else{
+            return response(["No existe el jugador"]);
+        }
+
+        
+        
     }
 
     /**

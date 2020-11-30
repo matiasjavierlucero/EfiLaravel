@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('/jugador','ApiJugadorController')->except(['create','edit']);
 
 Route::resource('/equipo','ApiEquipoController')->except(['create','edit']);
+
+Route::resource('/fixture','ApiFixtureController')->except(['create','edit']);

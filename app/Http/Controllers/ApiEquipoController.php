@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Equipos;
+use App\Localidad;
 
 class ApiEquipoController extends Controller
 {
@@ -14,7 +15,9 @@ class ApiEquipoController extends Controller
      */
     public function index()
     {
-        return Equipos::all();
+        $Equipos = Equipos::with('localidad','categoria','jugador')->get();          
+        return $Equipos;
+        
     }
 
     /**
@@ -46,7 +49,9 @@ class ApiEquipoController extends Controller
      */
     public function show($id)
     {
-        return Equipos::where('id','=',$id)->first();
+        return Equipos::with('localidad','categoria','jugador')
+            ->where('id','=',$id)
+            ->first();
     }
 
     /**
