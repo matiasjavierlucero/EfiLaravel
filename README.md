@@ -26,25 +26,26 @@ En el marco de la **Evaluacion Final Integradora (EFI)**, de la asignatura **Pro
 4. Realizar la migracion y el rellenado de datos
     - **`php artisan migrate --seed`**  
     
-5. La migracion creara un usuario User : **santipalacios@gmail.com**, password **laravel**
+5. La migracion creara un usuario 
+    - User : **santipalacios@gmail.com**, password **laravel**
 
 6. Correr la app (Port:8000):
-- **`php artisan serve`**
+    - **`php artisan serve`**
 
 ## API
 ### Endponits Disponibles 
 
-- Obtener los equipos:
--- http://localhost:8000/api/equipo (GET)
-- Obtener un equipo en particular
--- http://localhost:8000/api/equipo/{id} (GET)
+- Obtener los equipos **(GET)**:
+    - http://localhost:8000/api/equipo 
+- Obtener un equipo en particular **(GET)**
+    - http://localhost:8000/api/equipo/{id} 
 
-- Obtener los jugadores:
--- http://localhost:8000/api/jugador (GET)
-- Obtener un jugador en particular
--- http://localhost:8000/api/jugador/{id} (GET)
+- Obtener los jugadores **(GET)**:
+    - http://localhost:8000/api/jugador 
+- Obtener un jugador en particular **(GET)**
+    - http://localhost:8000/api/jugador/{id} 
 
-- Obtener fixture:
--- http://localhost:8000/api/fixture (GET)
+- Obtener fixture **(GET)**:
+    - http://localhost:8000/api/fixture 
 
 
