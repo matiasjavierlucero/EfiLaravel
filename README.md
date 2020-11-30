@@ -29,11 +29,11 @@ En el marco de la **Evaluacion Final Integradora (EFI)**, de la asignatura **Pro
 5. La migracion creara un usuario 
     - User : **santipalacios@gmail.com**, password **laravel**
 
-6. Correr la app (Port:8000):
+6. Correr la app **(Port:8000)**:
     - **`php artisan serve`**
 
 ## API
-### Endponits Disponibles 
+### Endpoints Disponibles 
 
 - Obtener los equipos **(GET)**:
     - http://localhost:8000/api/equipo 
