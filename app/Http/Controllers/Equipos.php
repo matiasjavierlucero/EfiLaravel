@@ -72,7 +72,6 @@ class Equipos extends Controller
         //Envio de email
         Mail::to('j.lucero@itecriocuarto.org.ar')->send(new EquipoNuevo($NombreEquipo));
 
-
         return redirect()->action('Equipos@create')->with('success','Equipo Cargado Correctame');
     }
 
