@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EquipoNuevo;
 class Equipos extends Controller
 {
     /**
@@ -66,7 +67,13 @@ class Equipos extends Controller
             'idLocalidad'=>$request->input('LocalidadEquipo'),
             'idCategoria'=>$request->input('CategoriaEquipo')
         ));
-        return redirect()->action('Equipos@create');
+        $NombreEquipo=$request->input('NombreEquipo');
+        
+        //Envio de email
+        Mail::to('j.lucero@itecriocuarto.org.ar')->send(new EquipoNuevo($NombreEquipo));
+
+
+        return redirect()->action('Equipos@create')->with('success','Equipo Cargado Correctame');
     }
 
     /**
