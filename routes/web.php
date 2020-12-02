@@ -37,6 +37,8 @@ Route::group(['prefix'=>'equipos'],function(){
     Route::post('guardar','Equipos@store')->middleware('auth');
     Route::get('editar/{id}','Equipos@edit')->middleware('auth');
     Route::post('update','Equipos@update')->middleware('auth');
+    Route::post('guardarequipo','Equipos@storefromequipo')->middleware('auth');
+    
 });
 
 //Rutas de Jugadores

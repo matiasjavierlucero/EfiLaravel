@@ -55,11 +55,14 @@ class Categoria extends Controller
     {
         $categoria=DB::table('categoria')->where('id','=',$id)->first();
         $equipos=DB::table('equipo')->where('idCategoria','=',$id)->get();
-        
+        $localidades=DB::table('localidad')
+       ->orderBy('Nombre','asc')
+       ->get();
 
         return view('categorias.categoria',[
             'categoria'=>$categoria,
-            'equipos'=>$equipos
+            'equipos'=>$equipos,
+            'localidades'=>$localidades
         ]);
     }
 

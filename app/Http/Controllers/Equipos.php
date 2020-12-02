@@ -74,6 +74,26 @@ class Equipos extends Controller
 
         return redirect()->action('Equipos@create')->with('success','Equipo Cargado Correctame');
     }
+    public function storefromequipo(Request $request)
+    {
+        /* var_dump($request->input('LocalidadEquipo'));
+        die(); */
+        $equipo=DB::table('equipo')->insert(array(
+            'nombre' => $request->input('NombreEquipo'),
+            'idLocalidad'=>$request->input('LocalidadEquipo'),
+            'idCategoria'=>$request->input('CategoriaEquipo')
+        ));
+        $NombreEquipo=$request->input('NombreEquipo');
+        
+        //Envio de email
+        Mail::to('j.lucero@itecriocuarto.org.ar')->send(new EquipoNuevo($NombreEquipo));
+
+        return redirect()->action('Categoria@show',[
+            'id'=>$request->input('CategoriaEquipo')
+        ])->with('success','Equipo Cargado Correctame');
+    }
+
+
 
     /**
      * Display the specified resource.
