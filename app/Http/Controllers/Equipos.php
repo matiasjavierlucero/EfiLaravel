@@ -104,6 +104,8 @@ class Equipos extends Controller
     public function show($id)
     {
         $equipo=DB::table('equipo')->where('id','=',$id)->first();
+        $posiciones=DB::table('posicion')->get();
+        $localidades=DB::table('localidad')->get();
         $jugadores=DB::table('jugador')
         ->join('localidad', 'localidad.id', '=', 'jugador.idLocalidad')
         ->join('equipo', 'equipo.id', '=', 'jugador.idEquipo')
@@ -115,7 +117,9 @@ class Equipos extends Controller
         die(); */
         return view('equipos.equipo',[
             'equipo'=>$equipo,
-            'jugadores'=>$jugadores
+            'jugadores'=>$jugadores,
+            'localidades'=>$localidades,
+            'posiciones'=>$posiciones
         ]);
     }
 

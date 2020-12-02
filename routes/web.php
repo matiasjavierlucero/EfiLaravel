@@ -47,6 +47,7 @@ Route::group(['prefix'=>'jugadores'],function(){
     Route::get('delete/{id}','Jugadores@destroy')->middleware('auth');
     Route::get('nuevojugador','Jugadores@create')->middleware('auth');
     Route::post('guardar','Jugadores@store')->middleware('auth');
+    Route::post('guardarjugador','Jugadores@storefromequipo')->middleware('auth');
 });
 //Rutas de Fixture
 Route::group(['prefix'=>'fixture'],function(){

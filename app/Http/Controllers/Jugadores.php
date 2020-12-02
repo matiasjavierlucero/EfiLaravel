@@ -84,6 +84,23 @@ class Jugadores extends Controller
         Log::channel('slack')->critical('Se agrego un nuevo Jugador');
         return redirect()->action('Jugadores@create')->with('success','Jugador Creado Correctamente');
     }
+    public function storefromequipo(Request $request)
+    {
+        $jugador=DB::table('jugador')->insert(array(
+            'Apellido' => $request->input('ApellidoJugador'),
+            'Nombre' => $request->input('NombreJugador'),
+            'idLocalidad'=>$request->input('LocalidadJugador'),
+            'idEquipo'=>$request->input('EquipoJugador'),
+            'idPosicion'=>$request->input('PosicionJugador'),
+            'dorsal'=>$request->input('dorsal'),
+            'dni'=>'0',
+            'photo'=>'none',
+        ));
+        Log::channel('slack')->critical('Se agrego un nuevo Jugador');
+        return redirect()->action('Equipos@show',[
+            'id'=>$request->input('EquipoJugador'),
+        ])->with('success','Jugador Creado Correctamente');
+    }
     
 
     /**
