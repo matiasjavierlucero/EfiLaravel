@@ -9,7 +9,7 @@
         </div>
         <div class="col-4 text-right">
             <a href="nuevoequipo" class="btn btn-secondary">
-                <i class="fa fa-plus" aria-hidden="true"></i> Nuevo Equipo
+               Gestionar Equipos
             </a>
         </div>
     </div>

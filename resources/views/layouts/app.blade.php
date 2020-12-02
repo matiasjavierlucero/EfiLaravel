@@ -50,16 +50,16 @@
                             @endif
                         @else
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/categorias/index">Categorias</a>
+                                    <a class="nav-link" href="/categorias/index" style="color: black">Categorias</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/equipos/index">Equipos</a>
+                                    <a class="nav-link" href="/equipos/index" style="color: black">Equipos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/jugadores/index">Jugadores</a>
+                                    <a class="nav-link" href="/jugadores/index" style="color: black">Jugadores</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/fixture/categoria/1/fecha1">Fixture</a>
+                                    <a class="nav-link" href="/fixture/categoria/1/fecha1" style="color: black">Fixture</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -102,3 +102,12 @@
     </div>
 </body>
 </html>
+
+
+<style>
+    li>a:hover{
+        background-color:rgb(139, 199, 189);
+        border-radius: 7%;
+        transition: background-color .5s;
+    }
+</style>

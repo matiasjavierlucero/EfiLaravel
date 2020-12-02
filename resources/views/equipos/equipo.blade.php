@@ -50,7 +50,7 @@
                         <td>{{$jugador->NomLocalidad}}</td>
                         <td>
                         <a href="{{$jugador->photo}}"><button class="btn btn-secondary"  data-toggle="modal" data-target="#modalFoto"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
-                            <a href="#"><button class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></i></button></a>
+                            <a href="#"><button class="btn btn-info"><i class="fas fa-edit" style="color:white"></i></button></a>
                         <a href="/jugadores/delete/{{$jugador->id}}"><button class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
                         </td>
                     </tr>

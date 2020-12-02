@@ -194,11 +194,10 @@ class Equipos extends Controller
             'idLocalidad'=>$localidadEquipo,
             'idCategoria'=>$categoriaEquipo
         ));
-        return redirect()->action('Equipos@create',[
-            'Mensaje'=>'Equipo Modificado Correctamente'
-        ]);
+        return redirect()->action('Equipos@create')
+        ->with('success','Equipo Actualizado Correctame');;
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -207,7 +206,19 @@ class Equipos extends Controller
      */
     public function destroy($id)
     {
-        //
+        $fixture=DB::table('fixture')
+        ->where('idLocal','=',$id)
+        ->orWhere('idVisitante','=',$id)
+        ->first();
+
+        if (isset($fixture)) {
+            return redirect()->action('Equipos@create')
+            ->with('error','El equipo tienen un partido asignado');
+        }else{
+            $equipo=DB::table('equipo')->where ('id',$id)->delete();
+            return redirect()->action('Equipos@create')
+                ->with('success','Equipo Eliminado Correctame');
+        } 
     }
     
 }

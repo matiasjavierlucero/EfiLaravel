@@ -5,7 +5,7 @@
         
         <div class="col">
             <div class="card" >
-                <a href="/categorias/index" class="display-4 btn " id="cat" style="font-size: 1.3rem;background-color:rgb(192, 117, 142);">
+                <a href="/categorias/index" class="display-4 btn btn-secondary" id="cat" style="font-size: 1.3rem">
                     Categorias
                     <br>    
                     <br>
@@ -45,5 +45,13 @@
         </div>
     </div>
 </div>
+<style>
+    .card>a:hover{
+        background-color:rgb(136, 184, 180);
+        border-radius: 7%;
+        border-color: transparent;
+        transition: background-color .5s;
+    }
+</style>
 
 @include('includes.footer')
